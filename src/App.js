@@ -27,6 +27,8 @@ export default function App() {
   async function handleLogout() {
     // call the logout function
     // clear the user in state
+    logout();
+    setCurrentUser('');
   }
 
   return (
@@ -34,6 +36,9 @@ export default function App() {
       <div className='App'>
         <header>
           {/* if there's a user, render a logout button here */}
+          {currentUser && 
+          <button onClick={handleLogout}>Logout</button>
+          }
         </header>
         <main>
           <Switch>
