@@ -25,7 +25,7 @@ export default function ListPage() {
     fetchItems();
   }
 
-  console.log('||', 'list items =', listItems);
+  // console.log('||', 'list items =', listItems);
 
   return (
     <div className="list-page">
@@ -34,7 +34,7 @@ export default function ListPage() {
       <ListItemForm fetchItems={fetchItems} />
       <div className='item-list'>
         {/* map through all the list items and render them here */}
-        {listItems.map((item, i) => <ListItem key={`${item}-${i}`} item={item}/>)}
+        {listItems.map((item, i) => <ListItem key={`${item}-${i}`} item={item} fetchItems={fetchItems}/>)}
       </div>
 
     </div>
