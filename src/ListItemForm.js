@@ -3,21 +3,30 @@ import { createListItem } from './services/fetch-utils';
 
 export default function ListItemForm({ fetchItems }) {
   // you'll need to track the name and quantity in state
+  const [itemForm, setItemForm] = useState('');
+  const [quantityForm, setQuantityForm] = useState(0);
 
   async function handleSubmit(e) {
     e.preventDefault();
     
     // make a new list item in supabase using the form values stored in state
-
-    // refetch the items using the handler functionpassed down as a prop
-
+    await createListItem({
+      name: itemForm,
+      quantity: quantityForm,
+      has_been_bought: 'false'
+    });
+    // refetch the items using the handler function passed down as a prop
+    fetchItems();
     // clear the name and quantity in state to refresh the form
+    setItemForm('');
+    setQuantityForm(0);
+
   }
 
   return (
     <div className='new-item-form-container'>
       {/* on submit, call the handleSubmit function */}
-      <form>
+      <form onSubmit={handleSubmit}>
           I need . . . 
         <label>
             Quantity
@@ -27,6 +36,8 @@ export default function ListItemForm({ fetchItems }) {
             required 
             type="number" 
             name="quantity"
+            value={quantityForm}
+            onChange={(e) => setQuantityForm(e.target.value)}
           />
         </label>
         <label>
@@ -35,7 +46,10 @@ export default function ListItemForm({ fetchItems }) {
           <input
             // this should be a controlled input, soi set the value based on state 
             required 
-            name="name" />
+            name="name"
+            value={itemForm}
+            onChange={(e) => setItemForm(e.target.value)}
+          />
         </label>
         <button>Add item</button>
       </form>
