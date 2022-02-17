@@ -1,6 +1,6 @@
 import { buyItem } from './services/fetch-utils';
 
-export default function ListItem({ fetchItems, listItem }) {
+export default function ListItem({ fetchItems, item }) {
   async function handleClick() {
     // buy the item (in supabase)
     // refetch the updated items array by calling the function passed in through props
@@ -13,6 +13,7 @@ export default function ListItem({ fetchItems, listItem }) {
       {/* if it's been bought, this p tag should have the 'bought' class. Otherwise it should have the 'needed' class */}
       <p>
         {/* show the quantity and name here */}
+        {item.quantity} {item.name}
       </p>     
     </div>
   );
