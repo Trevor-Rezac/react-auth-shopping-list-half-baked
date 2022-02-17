@@ -23,11 +23,14 @@ export default function ListPage() {
 
     // then call your fetchItems function to fetch and re-display
   }
-  // console.log('||', listItems);
+
+  console.log('||', 'list items =', listItems);
+
   return (
     <div className="list-page">
       <button onClick={handleDeleteClick}>New List</button>
       {/* pass fetchItems to the ListItemForm component */}
+      <ListItemForm fetchItems={fetchItems} />
       <div className='item-list'>
         {/* map through all the list items and render them here */}
       </div>
