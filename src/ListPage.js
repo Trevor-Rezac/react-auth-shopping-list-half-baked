@@ -20,8 +20,9 @@ export default function ListPage() {
 
   async function handleDeleteClick() {
     // delete all items
-
+    deleteAllItems();
     // then call your fetchItems function to fetch and re-display
+    fetchItems();
   }
 
   console.log('||', 'list items =', listItems);
