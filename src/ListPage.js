@@ -8,8 +8,14 @@ export default function ListPage() {
 
   // on load, call the fetchItems function (remember: useEffect)
 
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
   async function fetchItems() {
     // fetch the list items and inject them into state
+    const items = await getListItems();
+    setShoppingList(items);
   }
 
   async function handleDeleteClick() {
@@ -17,7 +23,7 @@ export default function ListPage() {
 
     // then call your fetchItems function to fetch and re-display
   }
-
+  // console.log('||', listItems);
   return (
     <div className="list-page">
       <button onClick={handleDeleteClick}>New List</button>

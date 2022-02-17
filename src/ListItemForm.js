@@ -9,7 +9,7 @@ export default function ListItemForm({ fetchItems }) {
     
     // make a new list item in supabase using the form values stored in state
 
-    // refetch the items using the handler functionpassed down as a prop
+    // refetch the items using the handler function passed down as a prop
 
     // clear the name and quantity in state to refresh the form
   }
